@@ -7,7 +7,6 @@ using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Sqlite;
 using Volo.Abp.Modularity;
-using Volo.Abp.PermissionManagement;
 using Volo.Abp.Uow;
 
 namespace datntdev.PersonalLogwork.EntityFrameworkCore;
@@ -23,11 +22,6 @@ public class PersonalLogworkEntityFrameworkCoreTestModule : AbpModule
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        Configure<PermissionManagementOptions>(options =>
-        {
-            options.SaveStaticPermissionsToDatabase = false;
-            options.IsDynamicPermissionStoreEnabled = false;
-        });
         context.Services.AddAlwaysDisableUnitOfWorkTransaction();
 
         ConfigureInMemorySqlite(context.Services);

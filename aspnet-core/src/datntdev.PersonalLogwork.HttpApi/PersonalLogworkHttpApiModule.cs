@@ -4,15 +4,13 @@ using Volo.Abp.Account;
 using Volo.Abp.Identity;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
-using Volo.Abp.PermissionManagement.HttpApi;
 
 namespace datntdev.PersonalLogwork;
 
 [DependsOn(
     typeof(PersonalLogworkApplicationContractsModule),
     typeof(AbpAccountHttpApiModule),
-    typeof(AbpIdentityHttpApiModule),
-    typeof(AbpPermissionManagementHttpApiModule)
+    typeof(AbpIdentityHttpApiModule)
 )]
 public class PersonalLogworkHttpApiModule : AbpModule
 {

@@ -2,7 +2,6 @@
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
-using Volo.Abp.PermissionManagement;
 
 namespace datntdev.PersonalLogwork;
 
@@ -10,8 +9,7 @@ namespace datntdev.PersonalLogwork;
     typeof(PersonalLogworkDomainModule),
     typeof(AbpAccountApplicationModule),
     typeof(PersonalLogworkApplicationContractsModule),
-    typeof(AbpIdentityApplicationModule),
-    typeof(AbpPermissionManagementApplicationModule)
+    typeof(AbpIdentityApplicationModule)
 )]
 public class PersonalLogworkApplicationModule : AbpModule
 {

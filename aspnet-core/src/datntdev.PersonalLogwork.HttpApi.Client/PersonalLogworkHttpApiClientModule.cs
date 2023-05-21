@@ -2,7 +2,6 @@
 using Volo.Abp.Account;
 using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
-using Volo.Abp.PermissionManagement;
 using Volo.Abp.VirtualFileSystem;
 
 namespace datntdev.PersonalLogwork;
@@ -10,8 +9,7 @@ namespace datntdev.PersonalLogwork;
 [DependsOn(
     typeof(PersonalLogworkApplicationContractsModule),
     typeof(AbpAccountHttpApiClientModule),
-    typeof(AbpIdentityHttpApiClientModule),
-    typeof(AbpPermissionManagementHttpApiClientModule)
+    typeof(AbpIdentityHttpApiClientModule)
 )]
 public class PersonalLogworkHttpApiClientModule : AbpModule
 {
