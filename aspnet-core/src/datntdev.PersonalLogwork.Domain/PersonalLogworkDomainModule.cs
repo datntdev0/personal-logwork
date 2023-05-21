@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using datntdev.PersonalLogwork.MultiTenancy;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Emailing;
@@ -8,12 +7,10 @@ using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
-using Volo.Abp.MultiTenancy;
 using Volo.Abp.OpenIddict;
 using Volo.Abp.PermissionManagement.Identity;
 using Volo.Abp.PermissionManagement.OpenIddict;
 using Volo.Abp.SettingManagement;
-using Volo.Abp.TenantManagement;
 
 namespace datntdev.PersonalLogwork;
 
@@ -27,9 +24,7 @@ namespace datntdev.PersonalLogwork;
     typeof(AbpPermissionManagementDomainOpenIddictModule),
     typeof(AbpPermissionManagementDomainIdentityModule),
     typeof(AbpSettingManagementDomainModule),
-    typeof(AbpTenantManagementDomainModule),
-    typeof(AbpEmailingModule)
-)]
+    typeof(AbpEmailingModule))]
 public class PersonalLogworkDomainModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
@@ -54,11 +49,6 @@ public class PersonalLogworkDomainModule : AbpModule
             options.Languages.Add(new LanguageInfo("zh-Hant", "zh-Hant", "繁體中文"));
             options.Languages.Add(new LanguageInfo("de-DE", "de-DE", "Deutsch", "de"));
             options.Languages.Add(new LanguageInfo("es", "es", "Español"));
-        });
-
-        Configure<AbpMultiTenancyOptions>(options =>
-        {
-            options.IsEnabled = MultiTenancyConsts.IsEnabled;
         });
 
 #if DEBUG

@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using datntdev.PersonalLogwork.EntityFrameworkCore;
-using datntdev.PersonalLogwork.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
 using Microsoft.OpenApi.Models;
@@ -17,7 +16,6 @@ using OpenIddict.Validation.AspNetCore;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
-using Volo.Abp.AspNetCore.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
@@ -34,7 +32,6 @@ namespace datntdev.PersonalLogwork;
 [DependsOn(
     typeof(PersonalLogworkHttpApiModule),
     typeof(AbpAutofacModule),
-    typeof(AbpAspNetCoreMultiTenancyModule),
     typeof(PersonalLogworkApplicationModule),
     typeof(PersonalLogworkEntityFrameworkCoreModule),
     typeof(AbpAspNetCoreMvcUiBasicThemeModule),
@@ -193,11 +190,6 @@ public class PersonalLogworkHttpApiHostModule : AbpModule
         app.UseCors();
         app.UseAuthentication();
         app.UseAbpOpenIddictValidation();
-
-        if (MultiTenancyConsts.IsEnabled)
-        {
-            app.UseMultiTenancy();
-        }
 
         app.UseUnitOfWork();
         app.UseAuthorization();

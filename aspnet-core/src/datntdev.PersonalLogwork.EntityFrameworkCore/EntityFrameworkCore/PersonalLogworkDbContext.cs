@@ -10,18 +10,14 @@ using Volo.Abp.Identity.EntityFrameworkCore;
 using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
-using Volo.Abp.TenantManagement;
-using Volo.Abp.TenantManagement.EntityFrameworkCore;
 
 namespace datntdev.PersonalLogwork.EntityFrameworkCore;
 
 [ReplaceDbContext(typeof(IIdentityDbContext))]
-[ReplaceDbContext(typeof(ITenantManagementDbContext))]
 [ConnectionStringName("Default")]
 public class PersonalLogworkDbContext :
     AbpDbContext<PersonalLogworkDbContext>,
-    IIdentityDbContext,
-    ITenantManagementDbContext
+    IIdentityDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
@@ -47,10 +43,6 @@ public class PersonalLogworkDbContext :
     public DbSet<IdentityLinkUser> LinkUsers { get; set; }
     public DbSet<IdentityUserDelegation> UserDelegations { get; set; }
 
-    // Tenant Management
-    public DbSet<Tenant> Tenants { get; set; }
-    public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
-
     #endregion
 
     public PersonalLogworkDbContext(DbContextOptions<PersonalLogworkDbContext> options)
@@ -72,7 +64,6 @@ public class PersonalLogworkDbContext :
         builder.ConfigureIdentity();
         builder.ConfigureOpenIddict();
         builder.ConfigureFeatureManagement();
-        builder.ConfigureTenantManagement();
 
         /* Configure your own tables/entities inside here */
 

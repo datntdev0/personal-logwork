@@ -5,7 +5,6 @@ using Volo.Abp.Modularity;
 using Volo.Abp.ObjectExtending;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
-using Volo.Abp.TenantManagement;
 
 namespace datntdev.PersonalLogwork;
 
@@ -16,9 +15,7 @@ namespace datntdev.PersonalLogwork;
     typeof(AbpIdentityApplicationContractsModule),
     typeof(AbpPermissionManagementApplicationContractsModule),
     typeof(AbpSettingManagementApplicationContractsModule),
-    typeof(AbpTenantManagementApplicationContractsModule),
-    typeof(AbpObjectExtendingModule)
-)]
+    typeof(AbpObjectExtendingModule))]
 public class PersonalLogworkApplicationContractsModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)

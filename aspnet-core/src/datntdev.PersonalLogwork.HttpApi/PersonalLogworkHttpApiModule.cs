@@ -7,7 +7,6 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.SettingManagement;
-using Volo.Abp.TenantManagement;
 
 namespace datntdev.PersonalLogwork;
 
@@ -16,10 +15,8 @@ namespace datntdev.PersonalLogwork;
     typeof(AbpAccountHttpApiModule),
     typeof(AbpIdentityHttpApiModule),
     typeof(AbpPermissionManagementHttpApiModule),
-    typeof(AbpTenantManagementHttpApiModule),
     typeof(AbpFeatureManagementHttpApiModule),
-    typeof(AbpSettingManagementHttpApiModule)
-    )]
+    typeof(AbpSettingManagementHttpApiModule))]
 public class PersonalLogworkHttpApiModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
