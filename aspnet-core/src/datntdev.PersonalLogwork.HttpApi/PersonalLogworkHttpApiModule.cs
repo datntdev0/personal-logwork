@@ -1,12 +1,10 @@
 ﻿using Localization.Resources.AbpUi;
 using datntdev.PersonalLogwork.Localization;
 using Volo.Abp.Account;
-using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement.HttpApi;
-using Volo.Abp.SettingManagement;
 
 namespace datntdev.PersonalLogwork;
 
@@ -14,9 +12,8 @@ namespace datntdev.PersonalLogwork;
     typeof(PersonalLogworkApplicationContractsModule),
     typeof(AbpAccountHttpApiModule),
     typeof(AbpIdentityHttpApiModule),
-    typeof(AbpPermissionManagementHttpApiModule),
-    typeof(AbpFeatureManagementHttpApiModule),
-    typeof(AbpSettingManagementHttpApiModule))]
+    typeof(AbpPermissionManagementHttpApiModule)
+)]
 public class PersonalLogworkHttpApiModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)

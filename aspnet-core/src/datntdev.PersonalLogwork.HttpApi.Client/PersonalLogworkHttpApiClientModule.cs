@@ -1,10 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Account;
-using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
-using Volo.Abp.SettingManagement;
 using Volo.Abp.VirtualFileSystem;
 
 namespace datntdev.PersonalLogwork;
@@ -13,9 +11,7 @@ namespace datntdev.PersonalLogwork;
     typeof(PersonalLogworkApplicationContractsModule),
     typeof(AbpAccountHttpApiClientModule),
     typeof(AbpIdentityHttpApiClientModule),
-    typeof(AbpPermissionManagementHttpApiClientModule),
-    typeof(AbpFeatureManagementHttpApiClientModule),
-    typeof(AbpSettingManagementHttpApiClientModule)
+    typeof(AbpPermissionManagementHttpApiClientModule)
 )]
 public class PersonalLogworkHttpApiClientModule : AbpModule
 {
