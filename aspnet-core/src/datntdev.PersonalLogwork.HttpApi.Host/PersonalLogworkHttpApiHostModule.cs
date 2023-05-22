@@ -120,20 +120,13 @@ public class PersonalLogworkHttpApiHostModule : AbpModule
 
         Configure<AbpBundlingOptions>(options =>
         {
-            options.StyleBundles.Configure(
-                DefaultThemeBundles.Styles.Global,
-                bundle =>
-                {
-                    bundle.AddFiles("/styles/themes/default/style.min.css");
-                }
-            );
+            options.StyleBundles.Configure(DefaultThemeBundles.Styles.Global,
+                bundle => bundle.AddFiles("/styles/themes/default/style.min.css"));
+            options.StyleBundles.Configure(DefaultThemeBundles.Styles.Fonts,
+                bundle => bundle.AddFiles("/styles/fonts.min.css"));
 
-            options.ScriptBundles.Configure(
-                DefaultThemeBundles.Scripts.Global,
-                bundle =>
-                {
-                    bundle.AddFiles("/scripts/scripts.min.js");
-                });
+            options.ScriptBundles.Configure(DefaultThemeBundles.Scripts.Global,
+                bundle => bundle.AddFiles("/scripts/scripts.min.js"));
         });
     }
 

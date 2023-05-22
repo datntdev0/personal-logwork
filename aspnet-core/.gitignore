@@ -263,5 +263,6 @@ src/datntdev.PersonalLogwork.Blazor.Server.Tiered/Logs/*
 
 # Use abp install-libs to restore.
 **/wwwroot/libs/*
+**/wwwroot/webfonts
 **/wwwroot/**/*.min.css
 **/wwwroot/**/*.min.js

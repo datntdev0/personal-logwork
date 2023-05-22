@@ -41,6 +41,7 @@
     {
         <meta name="description" content="@(ViewBag.Description as string)" />
     }
+    <abp-style-bundle name="@DefaultThemeBundles.Styles.Fonts" />
     <abp-style-bundle name="@DefaultThemeBundles.Styles.Global" />
 
     @await RenderSectionAsync("styles", false)
