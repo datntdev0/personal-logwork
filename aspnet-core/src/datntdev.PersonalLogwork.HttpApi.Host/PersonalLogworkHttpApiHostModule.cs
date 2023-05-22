@@ -26,6 +26,8 @@ using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.AspNetCore.Mvc.UI.Theming;
+using datntdev.PersonalLogwork.Themes;
 
 namespace datntdev.PersonalLogwork;
 
@@ -34,7 +36,6 @@ namespace datntdev.PersonalLogwork;
     typeof(AbpAutofacModule),
     typeof(PersonalLogworkApplicationModule),
     typeof(PersonalLogworkEntityFrameworkCoreModule),
-    typeof(AbpAspNetCoreMvcUiBasicThemeModule),
     typeof(AbpAccountWebOpenIddictModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule)
@@ -60,10 +61,10 @@ public class PersonalLogworkHttpApiHostModule : AbpModule
         var hostingEnvironment = context.Services.GetHostingEnvironment();
 
         ConfigureAuthentication(context);
-        ConfigureBundles();
         ConfigureUrls(configuration);
         ConfigureConventionalControllers();
         ConfigureVirtualFileSystem(context);
+        ConfigureThemes();
         ConfigureCors(context, configuration);
         ConfigureSwaggerServices(context, configuration);
     }
@@ -71,20 +72,6 @@ public class PersonalLogworkHttpApiHostModule : AbpModule
     private void ConfigureAuthentication(ServiceConfigurationContext context)
     {
         context.Services.ForwardIdentityAuthenticationForBearer(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
-    }
-
-    private void ConfigureBundles()
-    {
-        Configure<AbpBundlingOptions>(options =>
-        {
-            options.StyleBundles.Configure(
-                BasicThemeBundles.Styles.Global,
-                bundle =>
-                {
-                    bundle.AddFiles("/global-styles.css");
-                }
-            );
-        });
     }
 
     private void ConfigureUrls(IConfiguration configuration)
@@ -121,6 +108,33 @@ public class PersonalLogworkHttpApiHostModule : AbpModule
                         $"..{Path.DirectorySeparatorChar}datntdev.PersonalLogwork.Application"));
             });
         }
+    }
+
+    private void ConfigureThemes()
+    {
+        Configure<AbpThemingOptions>(options =>
+        {
+            options.Themes.Add<DefaultTheme>();
+            options.DefaultThemeName ??= DefaultTheme.Name;
+        });
+
+        Configure<AbpBundlingOptions>(options =>
+        {
+            options.StyleBundles.Configure(
+                DefaultThemeBundles.Styles.Global,
+                bundle =>
+                {
+                    bundle.AddFiles("/styles/themes/default/style.min.css");
+                }
+            );
+
+            options.ScriptBundles.Configure(
+                DefaultThemeBundles.Scripts.Global,
+                bundle =>
+                {
+                    bundle.AddFiles("/scripts/scripts.min.js");
+                });
+        });
     }
 
     private void ConfigureConventionalControllers()
