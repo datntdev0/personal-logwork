@@ -31,24 +31,14 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               {
-                "input": "node_modules/bootstrap/dist/css/bootstrap.rtl.min.css",
-                "inject": false,
-                "bundleName": "bootstrap-rtl.min"
+                "input": "../aspnet-core/src/datntdev.PersonalLogwork.HttpApi.Host/wwwroot/styles/fonts.min.css",
+                "inject": true,
+                "bundleName": "fonts.min"
               },
               {
-                "input": "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "input": "../aspnet-core/src/datntdev.PersonalLogwork.HttpApi.Host/wwwroot/styles/themes/default/style.min.css",
                 "inject": true,
-                "bundleName": "bootstrap-ltr.min"
-              },
-              {
-                "input": "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-                "inject": true,
-                "bundleName": "fontawesome-all.min"
-              },
-              {
-                "input": "node_modules/@fortawesome/fontawesome-free/css/v4-shims.min.css",
-                "inject": true,
-                "bundleName": "fontawesome-v4-shims.min"
+                "bundleName": "theme-default-style.min"
               },
               {
                 "input": "node_modules/@swimlane/ngx-datatable/index.css",
@@ -67,7 +57,13 @@
               },
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "input":  "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+                "inject": true,
+                "bundleName": "bootstrap"
+              }
+            ]
           },
           "configurations": {
             "production": {
