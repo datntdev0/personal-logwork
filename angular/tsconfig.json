@@ -24,9 +24,13 @@
         "src/app/proxy/*"
       ]
     },
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false
-  }
+  },
+  "exclude": [
+    "cypress.config.ts",
+    "cypress",
+  ]
 }
